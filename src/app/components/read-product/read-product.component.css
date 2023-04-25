@@ -1,0 +1,6 @@
+/* Set the properties related to delete and update icons of the fa-solid class */
+.fa-solid {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
