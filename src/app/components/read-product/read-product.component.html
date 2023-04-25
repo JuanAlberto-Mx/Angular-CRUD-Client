@@ -10,8 +10,11 @@
                     <!-- Title of the table to display the existing products -->
                     <span class="title">LIST OF PRODUCTS</span>
 
-                    <!-- Button to add a new product -->
-                    <button class="btn btn-success float-end">New</button>
+                    <!-- Button to add a new product
+                        1) btn-success sets the style of the button
+                        2) float-end property allows aligning the button's text to the left side 
+                        3) routerLink allows establishing a link to start navigation in a specific component -->
+                    <button class="btn btn-success float-end" routerLink="/create-product">New</button>
 
                     <!-- Table to display the list of products -->
                     <table class="table table-striped mt-3">
