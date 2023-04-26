@@ -1,0 +1,5 @@
+/* Style of the message displayed for required elements */
+.text-danger {
+    text-align: start;
+    margin-left: 5px;
+}

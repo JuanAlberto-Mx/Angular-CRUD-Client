@@ -3,28 +3,59 @@
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
             <div class="card">
+
                 <!-- Bootstrap style to display a centered text inside a card-body -->
                 <div class="card-body text-center">
 
                     <!-- Title of the section to create new products -->
                     <span class="title">CREATE PRODUCT</span>
 
-                    <!-- Form to enter the information of a new product -->
-                    <form class="mt-3">
+                    <!-- Form to enter the information of a new product
+                        1) [formGroup] allows binding a specific property to set the information of the form
+                        2) (ngSubmit) establishes a target method to perform operations with the information of the form
+                        3) addProduct() method corresponds to the create-product.component file -->
+                    <form class="mt-3" [formGroup]="productForm" (ngSubmit)="addProduct()">
+
                         <div class="mb-3">
-                            <!-- placeholder allows establishing a customized text to display it in the background -->
-                            <input type="text" class="form-control form-control-lg" placeholder="Product">
+                            <!-- Textbox element to enter the product name
+                                1) placeholder allows establishing a customized text to display it in the background
+                                2) formControlName allows binding the textbox value with a specific property -->
+                            <input type="text" class="form-control form-control-lg" placeholder="Product" formControlName="name">
+                            
+                            <!-- div to display messages related to errors
+                                1) text-danger allows showing a text in red color
+                                2) *ngIf allows performing an If-Then condition over specific form elements
+                                3) ! null assertion operator to avoid a compilation error -->
+                            <div class="text-danger" *ngIf="productForm.get('name')!.hasError('required') && productForm.get('name')!.touched">
+                                <span>The product name is <strong>mandatory</strong></span>
+                            </div>
                         </div>
+
                         <div class="mb-3">
-                            <input type="text" class="form-control form-control-lg" placeholder="Category">
+                            <input type="text" class="form-control form-control-lg" placeholder="Category" formControlName="category">
+
+                            <div class="text-danger" *ngIf="productForm.get('category')!.hasError('required') && productForm.get('category')!.touched">
+                                <span>The product category is <strong>mandatory</strong></span>
+                            </div>
                         </div>
+
                         <div class="mb-3">
-                            <input type="text" class="form-control form-control-lg" placeholder="Location">
+                            <input type="text" class="form-control form-control-lg" placeholder="Location" formControlName="location">
+
+                            <div class="text-danger" *ngIf="productForm.get('location')!.hasError('required') && productForm.get('location')!.touched">
+                                <span>The product location is <strong>mandatory</strong></span>
+                            </div>
                         </div>
+
                         <div class="mb-3">
                             <!-- textbox with number format -->
-                            <input type="number" class="form-control form-control-lg" placeholder="Price">
+                            <input type="number" class="form-control form-control-lg" placeholder="Price" formControlName="price">
+
+                            <div class="text-danger" *ngIf="productForm.get('price')!.hasError('required') && productForm.get('price')!.touched">
+                                <span>The price is <strong>mandatory</strong></span>
+                            </div>
                         </div>
+
                         <div class="mb-3">
                             <!-- Button specification
                                 1) btn-secondary sets the button to a traditional style
@@ -34,9 +65,11 @@
                             <button class="btn btn-secondary btn-lg float-start" routerLink="/">BACK</button>
                             
                             <!-- Button specification
-                                1) btn-success sets the button to an 'Accept' or 'OK' style
-                                2) float-end allows aligning the button to the right side -->
-                            <button class="btn btn-success btn-lg float-end">ACCEPT</button>
+                                1) submit type allows sending information from the form to other place
+                                2) btn-success sets the button to an 'Accept' or 'OK' style
+                                3) float-end allows aligning the button to the right side
+                                4) [disables] makes the button unable until the form is completed -->
+                            <button type="submit" class="btn btn-success btn-lg float-end" [disabled]="productForm.invalid">ACCEPT</button>
                         </div>
                     </form>
                 </div>

@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { ReadProductComponent } from './components/read-product/read-product.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule, // Allows including routes
+    ReactiveFormsModule // Add Reactive forms properties
   ],
   providers: [],
   bootstrap: [AppComponent]
