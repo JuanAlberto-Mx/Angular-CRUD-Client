@@ -6,6 +6,8 @@ import { CreateProductComponent } from './components/create-product/create-produ
 import { ReadProductComponent } from './components/read-product/read-product.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     RouterModule,
     AppRoutingModule, // Allows including routes
-    ReactiveFormsModule // Add Reactive forms properties
+    ReactiveFormsModule, // Add Reactive forms properties
+    BrowserAnimationsModule, // Add Browser animations properties from Toastr
+    ToastrModule.forRoot() // Add Toastr module
   ],
   providers: [],
   bootstrap: [AppComponent]
