@@ -23,4 +23,13 @@ export class ProductService {
   getProducts(): Observable<any> {
     return this.http.get(this.url);
   }
+
+  /**
+   * Method to access the DELETE method of the API in order to remove a specific product.
+   * @param id the id number of the product to remove.
+   * @returns the observable response.
+   */
+  deleteProduct(id: string): Observable<any> {
+    return this.http.delete(this.url + id);
+  }
 }
