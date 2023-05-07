@@ -29,7 +29,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <!-- Interpolation syntax to iterate the list of products -->
+                          <!-- Interpolation syntax to iterate the list of products and print the information -->
                           <tr *ngFor="let product of listProducts">
                             <td>{{product.name}}</td>
                             <td>{{product.category}}</td>
@@ -37,7 +37,9 @@
                             <td>{{product.price | currency:'MXN'}}</td>
                             <td>
                                 <i class="fa-solid fa-pen-to-square text-primary"></i>
-                                <i class="fa-solid fa-trash text-danger"></i>
+
+                                <!-- Binding the deleteProduct method to the (click) event -->
+                                <i (click)="deleteProduct(product.idProduct)" class="fa-solid fa-trash text-danger"></i>
                             </td>
                           </tr>
                         </tbody>
