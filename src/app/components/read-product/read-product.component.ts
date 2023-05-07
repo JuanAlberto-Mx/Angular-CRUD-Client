@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -12,7 +13,7 @@ export class ReadProductComponent implements OnInit {
   // Empty array to store the product list
   listProducts: Product[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private toastr: ToastrService) {}
 
   /**
    * Method to invoke the getProduct method whenever the application start.
@@ -28,13 +29,25 @@ export class ReadProductComponent implements OnInit {
     this.productService.getProducts().subscribe(
       data => {
         console.log(data);
-        
+
         // Set the listProducts variable to data parameter
         this.listProducts = data;
       },
       error => {
         console.log(error);
       }
-    )
+    );
+  }
+
+  deleteProduct(id: any) {
+    this.productService.deleteProduct(id).subscribe(
+      data => {
+        this.toastr.error('Product successfully deleted', 'Deleted Product');
+        this.getProducts();
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }
