@@ -7,8 +7,9 @@
                 <!-- Bootstrap style to display a centered text inside a card-body -->
                 <div class="card-body text-center">
 
-                    <!-- Title of the section to create new products -->
-                    <span class="title">CREATE PRODUCT</span>
+                    <!-- Title of the section to create new products
+                    The title variable is used by interpolation syntax -->
+                    <span class="title">{{title}}</span>
 
                     <!-- Form to enter the information of a new product
                         1) [formGroup] allows binding a specific property to set the information of the form
@@ -26,7 +27,7 @@
                                 1) text-danger allows showing a text in red color
                                 2) *ngIf allows performing an If-Then condition over specific form elements
                                 3) ! null assertion operator to avoid a compilation error -->
-                            <div class="text-danger" *ngIf="productForm.get('name')!.hasError('required') && productForm.get('name')!.touched">
+                            <div class="text-danger" *ngIf="productForm.get('name')?.hasError('required') && productForm.get('name')?.touched">
                                 <span>The product name is <strong>mandatory</strong></span>
                             </div>
                         </div>
@@ -34,7 +35,7 @@
                         <div class="mb-3">
                             <input type="text" class="form-control form-control-lg" placeholder="Category" formControlName="category">
 
-                            <div class="text-danger" *ngIf="productForm.get('category')!.hasError('required') && productForm.get('category')!.touched">
+                            <div class="text-danger" *ngIf="productForm.get('category')?.hasError('required') && productForm.get('category')?.touched">
                                 <span>The product category is <strong>mandatory</strong></span>
                             </div>
                         </div>
@@ -42,7 +43,7 @@
                         <div class="mb-3">
                             <input type="text" class="form-control form-control-lg" placeholder="Location" formControlName="location">
 
-                            <div class="text-danger" *ngIf="productForm.get('location')!.hasError('required') && productForm.get('location')!.touched">
+                            <div class="text-danger" *ngIf="productForm.get('location')?.hasError('required') && productForm.get('location')?.touched">
                                 <span>The product location is <strong>mandatory</strong></span>
                             </div>
                         </div>
@@ -51,7 +52,7 @@
                             <!-- textbox with number format -->
                             <input type="number" class="form-control form-control-lg" placeholder="Price" formControlName="price">
 
-                            <div class="text-danger" *ngIf="productForm.get('price')!.hasError('required') && productForm.get('price')!.touched">
+                            <div class="text-danger" *ngIf="productForm.get('price')?.hasError('required') && productForm.get('price')?.touched">
                                 <span>The price is <strong>mandatory</strong></span>
                             </div>
                         </div>
