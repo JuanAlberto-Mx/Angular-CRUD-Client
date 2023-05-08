@@ -1,5 +1,5 @@
 export class Product {
-    idProduct? : number; // Optional parameter
+    _id? : number; // Optional parameter
     name: string;
     category: string;
     location: string;
