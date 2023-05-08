@@ -42,6 +42,8 @@ export class ReadProductComponent implements OnInit {
   deleteProduct(id: any) {
     this.productService.deleteProduct(id).subscribe(
       data => {
+        console.log(data);
+        
         this.toastr.error('Product successfully deleted', 'Deleted Product');
         this.getProducts();
       },
