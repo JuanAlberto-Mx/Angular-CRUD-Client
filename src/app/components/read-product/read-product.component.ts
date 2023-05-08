@@ -23,7 +23,7 @@ export class ReadProductComponent implements OnInit {
   }
 
   /**
-   * Method to subscribe the API methods available.
+   * Method to subscribe the GET API methods available.
    */
   getProducts() {
     this.productService.getProducts().subscribe(
@@ -39,6 +39,9 @@ export class ReadProductComponent implements OnInit {
     );
   }
 
+  /**
+   * Method to subscribe the DELETE API methods available.
+   */
   deleteProduct(id: any) {
     this.productService.deleteProduct(id).subscribe(
       data => {
