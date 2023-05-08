@@ -66,8 +66,6 @@ export class CreateProductComponent implements OnInit {
         // Reset the form in case of error
         this.productForm.reset();
       }
-    )
-
-    
+    );
   }
 }
