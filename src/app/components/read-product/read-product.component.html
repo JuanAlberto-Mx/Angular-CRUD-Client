@@ -36,10 +36,12 @@
                             <td>{{product.location}}</td>
                             <td>{{product.price | currency:'MXN'}}</td>
                             <td>
-                                <i class="fa-solid fa-pen-to-square text-primary"></i>
+                              <!-- Binding the [routerLink] to the icon in order to send the user to the main page
+                              and reuse the form to edit a product -->
+                              <i [routerLink]="['/update-product', product._id]" class="fa-solid fa-pen-to-square text-primary"></i>
 
-                                <!-- Binding the deleteProduct method to the (click) event -->
-                                <i (click)="deleteProduct(product.idProduct)" class="fa-solid fa-trash text-danger"></i>
+                              <!-- Binding the deleteProduct method to the (click) event -->
+                              <i (click)="deleteProduct(product._id)" class="fa-solid fa-trash text-danger"></i>
                             </td>
                           </tr>
                         </tbody>
