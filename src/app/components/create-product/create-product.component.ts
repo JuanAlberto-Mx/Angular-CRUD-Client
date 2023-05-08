@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-create-product',
@@ -19,8 +20,9 @@ export class CreateProductComponent implements OnInit {
    * @param formBuilder the instance with the required information of the product.
    * @param router the instance to redirect the component to other site.
    * @param toastr the instance to display a message based on Toastr library.
+   * @param productService the instance to enable the API product service communication.
    */
-  constructor(private formBuilder: FormBuilder, private router: Router, private toastr: ToastrService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private toastr: ToastrService, private productService: ProductService) {
     // Creates a new group to set the information of the product based on the web form data
     this.productForm = this.formBuilder.group({
 
@@ -47,12 +49,25 @@ export class CreateProductComponent implements OnInit {
       price: this.productForm.get('price')?.value
     };
 
+    // Printing the product in console
     console.log(PRODUCT);
 
-    // Displays a message by using the Toastr library 
-    this.toastr.success('Product created successfully', 'Create product');
+    this.productService.createProduct(PRODUCT).subscribe(
+      data => {
+        // Displays a message by using the Toastr library 
+        this.toastr.success('Product created successfully', 'Create product');
 
-    // Establishes the target component to redirect the user interaction after a
-    this.router.navigate(['/']);
+        // Establishes the target component to redirect the user interaction after a
+        this.router.navigate(['/']);
+      },
+      error => {
+        console.log(error);
+
+        // Reset the form in case of error
+        this.productForm.reset();
+      }
+    )
+
+    
   }
 }
